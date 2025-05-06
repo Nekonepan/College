@@ -12,20 +12,27 @@ p {
 
 h2 {
   font-size: 150%;
+  color: rgb(255, 0, 102);
 }
 
 h3 {
   font-size: 100%;
+  background-color: yellow;
 }
 
 div {
   border: solid;
+  background-color: aliceblue;
   border-width: thin;
   width: 100%;
 }
 
 a:link {
   color: rgb(0, 0, 153);
+}
+
+#link2 {
+  color: darkorange;
 }
 
 a:visited {
