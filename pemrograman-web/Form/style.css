@@ -1,0 +1,13 @@
+.Header {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.BodyForm {
+  /* margin: 20px; */
+  padding: 20px;
+  border: 1px solid;
+  /* border-radius: 5px; */
+}
