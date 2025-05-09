@@ -12,9 +12,11 @@ void input() {
 
     cout << "NIM : ";
     cin >> nim;
+		cin.ignore();
 
     cout << "Nama : ";
     cin >> nama;
+		getline(cin, nama);
 
     cout << endl;
     cout << "Jumlah mata kuliah : ";
@@ -27,8 +29,9 @@ void jumlah_sks(int i) {
         return;
     }
 
+		cin.ignore();
     cout << "Mata kuliah ke-" << i << " : ";
-    cin >> nama_matkul[i];
+    getline(cin,nama_matkul[i]);
     cout << "Jumlah SKS : ";
     cin >> sks[i];
     total_sks += sks[i];
