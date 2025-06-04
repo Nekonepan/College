@@ -1,5 +1,5 @@
 #include <iostream>
-using namespace std;\
+using namespace std;
 
 int main(){
   int bilangan;
@@ -12,7 +12,7 @@ int main(){
       check++;
     }
   }
-  
+
   if (check < 3){
     cout << bilangan << " merupakan bilangan prima" << endl;
   } else {
