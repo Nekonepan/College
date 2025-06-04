@@ -12,6 +12,7 @@ int main(){
       check++;
     }
   }
+  
   if (check < 3){
     cout << bilangan << " merupakan bilangan prima" << endl;
   } else {
