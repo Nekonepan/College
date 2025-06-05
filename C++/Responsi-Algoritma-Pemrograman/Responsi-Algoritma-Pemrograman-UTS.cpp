@@ -63,19 +63,23 @@ bool login() {
 // 	cin >> password;
 // }
 
-void home(){
+//===== HOME PAGE =====//
+void home() {
 	system("cls");
 	cout << endl;
-	cout << "=========================" << endl;
-	cout << "Selamat Datang " << username << endl;
+	cout << "==============================" << endl;
+	cout << "Selamat Datang " << akun_terdaftar[index_login].username << endl;
 	cout << "Saldo = Rp. " << total_saldo << endl;
-	cout << "=========================" << endl;
+	cout << "==============================" << endl;
 }
+//+++++ HOME PAGE +++++//
 
-void list_barang(){
+//===== LIST BARANG DAN PILIH BARANG =====//
+void list_barang() {
 	system("cls");
-	int pilihan;
-	char ya_tidak;
+
+	int pilihan = 0;
+
 	cout << "=============================" << endl;
 	cout << "1. Kaos : Rp. 75.000" << endl;
 	cout << "2. Kemeja : Rp. 175.000" << endl;
@@ -90,25 +94,46 @@ void list_barang(){
 		cout << "Masukkan pilihan : ";
 		cin >> pilihan;
 			
-		switch (pilihan){
-			case 1:
+		switch (pilihan) {
+			case 1: {
 				total_harga_keseluruhan += 75000;
 				break;
-			case 2:
+			}
+			case 2: {
 				total_harga_keseluruhan += 175000;
 				break;
-			case 3:
+			}
+			case 3: {
 				total_harga_keseluruhan += 70000;
 				break;
-			case 4:
+			}
+			case 4: {
 				total_harga_keseluruhan += 200000;
 				break;
-			case 5:
+			}
+			case 5: {
 				total_harga_keseluruhan += 150000;
 				break;
+			}
 		}
 	}
+
+	//----- IF DISKON T/F -----//
+	if (total_harga_keseluruhan >= 200000) {
+		float persen = (25000.0 / total_harga_keseluruhan) * 100;
+		char jawab;
+
+		cout << "Kamu bisa memakai voucher diskon sebesar Rp. 25.000 (" << persen << "%). Gunakan? (y/n) : ";
+		cin >> jawab;
+
+		if (jawab == 'y' || jawab == 'Y') {
+			pakai_voucher = true;
+			diskon = 25000;
+		}
+	}
+	//----- END IF DISKON T/F -----//
 }
+//+++++ LIST BARANG DAN PILIH BARANG +++++//
 
 void input_alamat(){
 	system("cls");
