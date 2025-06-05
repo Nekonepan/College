@@ -1,19 +1,67 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 
-int total_saldo = 0;
-long int password;
-string username;
-int total_harga_keseluruhan = 0;
-string alamat;
+struct akun {
+	string username;
+	long password;
+};
 
-void login(){	
-	cout << "===== LOGIN =====" << endl;
-	cout << "Masukkan Username : ";
-	cin >> username;
-	cout << "Masukkan Password : ";
-	cin >> password;
+akun akun_terdaftar[10];
+int jumlah_akun = 0;
+int index_login = -1;
+
+long int password; //NOTE
+string username; //NOTE
+int total_saldo = 0;
+int total_harga_keseluruhan = 0;
+int ongkir = 0;
+int diskon = 0;
+string alamat;
+string nama_ekspedisi;
+bool pakai_voucher = false;
+bool gratis_ongkir = false;
+bool pakai_cargo = false;
+
+//===== REGISTRASI DAN LOGIN =====//
+void registrasi() {
+	cout << "===== REGISTRASI =====" << endl;
+	cout << "Username : ";
+	cin >> akun_terdaftar[jumlah_akun].username;
+	cout << "Password : ";
+	cin >> akun_terdaftar[jumlah_akun].password;
+	jumlah_akun++;
+	cout << "Registrasi Berhasil, Selamat datang " << username << endl;
 }
+
+bool login() {
+	string user;
+	long pass;
+
+	cout << "===== LOGIN =====" << endl;
+	cout << "Masukkan username : ";
+	cin >> user;
+	cout << "Masukkan password : ";
+	cin >> pass;
+
+	for (int i = 0; i < jumlah_akun; i++) {
+		if (akun_terdaftar[i].username == user && akun_terdaftar[i].password == pass) {
+			index_login = i;
+			return true;
+		}
+	}
+	return false;
+}
+//+++++ REGISTRASI DAN LOGIN +++++//
+
+
+// void login(){	
+// 	cout << "===== LOGIN =====" << endl;
+// 	cout << "Masukkan Username : ";
+// 	cin >> username;
+// 	cout << "Masukkan Password : ";
+// 	cin >> password;
+// }
 
 void home(){
 	system("cls");
