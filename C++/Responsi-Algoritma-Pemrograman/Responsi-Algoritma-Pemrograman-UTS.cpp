@@ -131,46 +131,94 @@ void list_barang() {
 			diskon = 25000;
 		}
 	}
-	//----- END IF DISKON T/F -----//
+	//------------------------//
 }
 //+++++ LIST BARANG DAN PILIH BARANG +++++//
 
+//===== INPUT ALAMAT =====//
 void input_alamat(){
-	system("cls");
-	cout << "Masukkan alamat : ";
-	cin >> alamat;
+	cout << "Masukkan alamat yang akan dituju : ";
+	cin.ignore();
+	getline(cin, alamat);
 }
+//+++++ INPUT ALAMAT +++++//
 
+//===== ISI SALDO =====//
 void tambah_saldo(){
-	system("cls");
 	int isi_saldo;
+
 	cout << "Masukkan jumlah saldo : ";
 	cin >> isi_saldo;
-	total_saldo += isi_saldo;
-	home();
-}
 
+	total_saldo += isi_saldo;
+}
+//+++++ ISI SALDO +++++//
+
+//===== MENU EKSPEDISI =====//
 void pilih_ekspedisi(){
+	//----- PILIH EKSPEDISI -----//
 	int pilihan;
 	cout << endl;
+	cout << "===== PILIH EKSPEDISI =====" << endl;
 	cout << "1. JNE : Rp. 14.000" << endl;
 	cout << "2. JNT : Rp. 15.000" << endl;
 	cout << "3. SiCepat : Rp. 13.000" << endl;
+	cout << "===========================" << endl;
 	cout << "Pilih Ekspedisi : ";
 	cin >> pilihan;
+	//----------------------------//
+
+	//----- PILIH TIPE EKSPEDISI -----//
+	int tipe;
+	cout << endl;
+	cout << "===== TIPE EKSPEDISI =====" << endl;
+	cout << "1. Reguler" << endl;
+	cout << "2. Cargo [+Rp. 10.000]" << endl;
+	cout << "==========================" << endl;
+	cout << "Pilih tipe ekspedisi : ";
+	cin >> tipe;
+	//--------------------------------//
+
+	pakai_cargo = (tipe == 2);
 	
-	switch (pilihan){
-		case 1:
-			total_harga_keseluruhan += 14000;
+	switch(pilihan) {
+		case 1: {
+			nama_ekspedisi = "JNE";
+			ongkir = 14000;
 			break;
-		case 2:
-			total_harga_keseluruhan += 15000;
+		}
+		case 2: {
+			nama_ekspedisi = "JNT";
+			ongkir = 15000;
 			break;
-		case 3:
-			total_harga_keseluruhan += 13000;
+		}
+		case 3: {
+			nama_ekspedisi = "SiCepat";
+			ongkir = 13000;
 			break;
+		}
 	}
+
+	if (pakai_cargo) {
+		ongkir += 10000;
+	}
+	
+	//----- IF GRATIS ONGKIR -----//
+	if (total_harga_keseluruhan >= 50000) {
+		cout << "Kamu mendapatkan gratis ongkir. Gunakan ? (y/n) : ";
+		char jawab;
+		cin >> jawab;
+
+		if (jawab == 'y' || jawab == 'Y') {
+			gratis_ongkir = true;
+			ongkir = 0;
+		}
+	}
+	//----------------------------//
+
+	total_harga_keseluruhan = total_harga_keseluruhan - diskon + ongkir;
 }
+//+++++ MENU EKSPEDISI +++++//
 
 void pilih_menu_home(){
 	int pilihan;
