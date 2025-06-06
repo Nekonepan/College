@@ -10,9 +10,6 @@ struct akun {
 akun akun_terdaftar[10];
 int jumlah_akun = 0;
 int index_login = -1;
-
-long int password; //NOTE
-string username; //NOTE
 int total_saldo = 0;
 int total_harga_keseluruhan = 0;
 int ongkir = 0;
@@ -31,7 +28,7 @@ void registrasi() {
 	cout << "Password : ";
 	cin >> akun_terdaftar[jumlah_akun].password;
 	jumlah_akun++;
-	cout << "Registrasi Berhasil, Selamat datang " << username << endl;
+	cout << "Registrasi Berhasil, Selamat datang " << akun_terdaftar[index_login].username << endl;
 }
 
 bool login() {
@@ -53,15 +50,6 @@ bool login() {
 	return false;
 }
 //+++++ REGISTRASI DAN LOGIN +++++//
-
-
-// void login(){	
-// 	cout << "===== LOGIN =====" << endl;
-// 	cout << "Masukkan Username : ";
-// 	cin >> username;
-// 	cout << "Masukkan Password : ";
-// 	cin >> password;
-// }
 
 //===== HOME PAGE =====//
 void home() {
@@ -220,38 +208,34 @@ void pilih_ekspedisi(){
 }
 //+++++ MENU EKSPEDISI +++++//
 
-void pilih_menu_home(){
-	int pilihan;
-	cout << endl;
-	cout << "1. Belanja" << endl;
-	cout << "2. Isi Saldo" << endl;
-	cout << "3. Keluar" << endl;
-	cout << "Pilih Menu : ";
-	cin >> pilihan;
-	
-	switch (pilihan){
-		case 1:
-			list_barang();
-			input_alamat();
-			if (total_harga_keseluruhan >= 200000){
-				total_harga_keseluruhan - 50000;
-			}
-			pilih_ekspedisi();
-			break;
-		case 2:
-			tambah_saldo();
-			pilih_menu_home();
-			break;	
+//===== CHECKOUT =====//
+void checkout() {
+	if (total_saldo >= total_harga_keseluruhan) {
+		total_saldo -= total_harga_keseluruhan;
+		cout << "Chekout berhasil ! Saldo tersisa : Rp. " << total_saldo << endl;
+	} else {
+		cout << "Saldo anda tidak cukup untuk checkout!" << endl;
 	}
 }
+//+++++ CHECKOUT +++++//
 
-void invoice(){
-	cout << "Jumlah yang harus dibayar : " << total_harga_keseluruhan << endl;
+//===== INVOICE =====//
+void invoice() {
+	ofstream struk("invoice.txt");
+	cout << endl;
+	struk << "===== INVOICE =====" << endl;
+	struk << "Username : " << akun_terdaftar[index_login].username << endl;
+	struk << "Alamat : " << alamat;
+	struk << "Ekspedisi : " << nama_ekspedisi << (pakai_cargo ? " (Cargo)" : " (Reguler)") << endl;
+	struk << "Diskon Voucher : Rp. " << diskon;
+	struk << "Ongkir : Rp. " << ongkir;
+	struk << "Total Bayar : Rp. " << total_harga_keseluruhan;
+	struk << "===================" << endl;
+	struk.close();
+	cout << "Invoice telah dicetak";
 }
+//+++++ INVOICE +++++//
 
 int main(){
-	login();
-	home();
-	pilih_menu_home();
-	invoice();
+	
 }
