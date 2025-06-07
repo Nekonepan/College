@@ -4,7 +4,7 @@ using namespace std;
 
 struct akun {
 	string username;
-	long password;
+	long int password;
 };
 
 akun akun_terdaftar[10];
@@ -28,7 +28,7 @@ void registrasi() {
 	cout << "Password : ";
 	cin >> akun_terdaftar[jumlah_akun].password;
 	jumlah_akun++;
-	cout << "Registrasi Berhasil, Selamat datang " << akun_terdaftar[index_login].username << endl;
+	cout << "Registrasi Berhasil, Selamat datang " << endl;
 }
 
 bool login() {
@@ -237,5 +237,49 @@ void invoice() {
 //+++++ INVOICE +++++//
 
 int main(){
-	
+	int pilihan;
+
+	cout << "==================" << endl;
+	cout << "1. Login" << endl;
+	cout << "2. Registrasi" << endl;
+	cout << "==================" << endl;
+	cout << "Pilih : ";
+	cin >> pilihan;
+
+	if (pilihan == 2) {
+		registrasi();
+	}
+
+	while (!login()) {
+		cout << "Login gagal! Coba lagi" << endl;
+	}
+
+	home();
+
+	int menu;
+
+	do {
+		cout << "================" << endl;
+		cout << "1. Belanja" << endl;
+		cout << "2. Isi saldo" << endl;
+		cout << "3. Keluar" << endl;
+		cout << "================" << endl;
+		cout << "Pilih : ";
+		cin >> menu;
+
+		switch (menu) {
+			case 1: {
+				list_barang();
+				input_alamat();
+				pilih_ekspedisi();
+				checkout();
+				invoice();
+				break;
+			}
+			case 2: {
+				tambah_saldo();
+				break;
+			}
+		}
+	} while (menu != 3);
 }
