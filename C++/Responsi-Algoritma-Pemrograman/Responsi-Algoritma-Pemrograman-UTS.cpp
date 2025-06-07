@@ -22,6 +22,11 @@ bool pakai_cargo = false;
 
 //===== REGISTRASI DAN LOGIN =====//
 void registrasi() {
+	if (jumlah_akun >= 10) {
+		cout << "Maksimum akun tercapai. Tidak bisa registrasi lagi." << endl;
+		return;
+	}
+
 	cout << "===== REGISTRASI =====" << endl;
 	cout << "Username : ";
 	cin >> akun_terdaftar[jumlah_akun].username;
@@ -236,23 +241,41 @@ void invoice() {
 }
 //+++++ INVOICE +++++//
 
+//============================= MAIN =============================//
 int main(){
-	int pilihan;
+	//======================= NOTE =======================//
+	bool sudah_login = false;
 
-	cout << "==================" << endl;
-	cout << "1. Login" << endl;
-	cout << "2. Registrasi" << endl;
-	cout << "==================" << endl;
-	cout << "Pilih : ";
-	cin >> pilihan;
+	while (!sudah_login) {
+		int pilihan;
 
-	if (pilihan == 2) {
-		registrasi();
+		cout << "===== MENU UTAMA =====" << endl;
+		cout << "1. Login" << endl;
+		cout << "2. Registrasi" << endl;
+		cout << "======================" << endl;
+		cout << "Pilih : ";
+		cin >> pilihan;
+
+		switch (pilihan) {
+			case 1: {
+				if (login()) {
+					sudah_login = true;
+				} else {
+					cout << "Login gagal! Coba lagi." << endl;
+				}
+				break;
+			}
+			case 2: {
+				registrasi();
+				break;
+			}
+			case 3: {
+				return 0;
+			}
+		}
 	}
-
-	while (!login()) {
-		cout << "Login gagal! Coba lagi" << endl;
-	}
+	//======================= NOTE =======================//
+	
 
 	home();
 
