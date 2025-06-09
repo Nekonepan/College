@@ -130,8 +130,8 @@ void list_barang() {
 
 //===== INPUT ALAMAT =====//
 void input_alamat(){
-	cout << "Masukkan alamat yang akan dituju : ";
 	cin.ignore();
+	cout << "Masukkan alamat yang akan dituju : ";
 	getline(cin, alamat);
 }
 //+++++ INPUT ALAMAT +++++//
@@ -243,7 +243,6 @@ void invoice() {
 
 //============================= MAIN =============================//
 int main(){
-	//======================= NOTE =======================//
 	bool sudah_login = false;
 
 	while (!sudah_login) {
@@ -252,9 +251,11 @@ int main(){
 		cout << "===== MENU UTAMA =====" << endl;
 		cout << "1. Login" << endl;
 		cout << "2. Registrasi" << endl;
+		cout << "3. Keluar" << endl;
 		cout << "======================" << endl;
 		cout << "Pilih : ";
 		cin >> pilihan;
+		cin.ignore();
 
 		switch (pilihan) {
 			case 1: {
@@ -267,6 +268,10 @@ int main(){
 			}
 			case 2: {
 				registrasi();
+				index_login = jumlah_akun - 1;
+				sudah_login = true;
+				cout << "Login sebagai " << akun_terdaftar[index_login].username << " berhasil" << endl;
+				system("pause");
 				break;
 			}
 			case 3: {
@@ -274,8 +279,6 @@ int main(){
 			}
 		}
 	}
-	//======================= NOTE =======================//
-	
 
 	home();
 
@@ -289,6 +292,7 @@ int main(){
 		cout << "================" << endl;
 		cout << "Pilih : ";
 		cin >> menu;
+		cin.ignore();
 
 		switch (menu) {
 			case 1: {
