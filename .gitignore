@@ -1,4 +1,4 @@
 *.exe
 .vscode/
 *.bak
-!rekap_layanan_barbershop.txt
+rekap_layanan_barbershop.txt
