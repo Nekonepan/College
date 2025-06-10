@@ -1,3 +1,4 @@
 *.exe
 .vscode/
 *.bak
+!rekap_layanan_barbershop.txt
