@@ -63,9 +63,12 @@ void sort_descending(int id[], string nama[], string jabatan[], string telp[], i
 
 void cari_karyawan(int id[], string nama[], string jabatan[], string telp[], int jumlah) {
     int cari_id;
+
     cout << "Masukkan ID karyawan yang ingin dicari: ";
     cin >> cari_id;
+
     bool find = false;
+
     for (int i = 0; i < jumlah; i++) {
         if (id[i] == cari_id) {
             cout << endl;
@@ -78,6 +81,7 @@ void cari_karyawan(int id[], string nama[], string jabatan[], string telp[], int
             break;
         }
     }
+    
     if (!find) {
         cout << "Karyawan dengan ID " << cari_id << " tidak ditemukan." << endl;
     }
@@ -105,27 +109,40 @@ int main() {
         cout << endl;
 
         switch (pilihan) {
-            case 1:
+            case 1: {
+                system("cls");
                 input_data(id, nama, jabatan, telp, jumlah);
+                system("pause");
                 break;
-            case 2:
+            }
+            case 2: {
+                system("cls");
                 cout << endl;
                 cout << "=== DATA DESCENDING (ID terbesar ke terkecil) ===" << endl;
                 sort_descending(id, nama, jabatan, telp, jumlah);
                 tampil_data(id, nama, jabatan, telp, jumlah);
-
+                
                 cout << "=== DATA ASCENDING (ID terkecil ke terbesar) ===" << endl;
                 sort_ascending(id, nama, jabatan, telp, jumlah);
                 tampil_data(id, nama, jabatan, telp, jumlah);
+                system("pause");
                 break;
-            case 3:
+            }
+            case 3: {
+                system("cls");
                 cari_karyawan(id, nama, jabatan, telp, jumlah);
+                system("pause");
                 break;
-            case 0:
+            }
+            case 0: {
+                system("cls");
                 cout << "Program selesai." << endl;
+                system("pause");
                 break;
-            default:
+            }
+            default: {
                 cout << "Pilihan tidak valid." << endl;
+            }
         }
         cout << endl;
     } while (pilihan != 0);
