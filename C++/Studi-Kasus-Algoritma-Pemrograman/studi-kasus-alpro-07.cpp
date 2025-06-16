@@ -138,6 +138,7 @@ int main() {
     read_data(id, nama, jabatan, telp, jumlah);
 
     do {
+        system("cls");
         cout << "===============================================" << endl;
         cout << "           DATA KARYAWAN PT AMBATAGOR          " << endl;
         cout << "===============================================" << endl;
