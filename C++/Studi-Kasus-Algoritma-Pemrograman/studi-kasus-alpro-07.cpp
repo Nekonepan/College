@@ -1,7 +1,45 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 const int MAKS = 100;
+
+void write_data(const int id[], const string nama[], const string jabatan[], const string telp[], int jumlah) {
+    ofstream file("data_karyawan.txt");
+    if (file.is_open()) {
+        file << jumlah << endl;
+        for (int i = 0; i < jumlah; i++) {
+            file << id[i] << endl;
+            file << nama[i] << endl;
+            file << jabatan[i] << endl;
+            file << telp[i] << endl;
+            file << "--------------------------" << endl;
+        }
+        file.close();
+    } else {
+        cout << "Gagal menyimpan data" << endl;
+    }
+}
+
+void read_data(int id[], string nama[], string jabatan[], string telp[], int &jumlah) {
+    ifstream file("data_karyawan.txt");
+    if (file.is_open()) {
+        file >> jumlah;
+        file.ignore();
+        for (int i = 0; i < jumlah; i++) {
+            file >> id[i];
+            file.ignore();
+            getline(file, nama[i]);
+            getline(file, jabatan[i]);
+            getline(file, telp[i]);
+            string batas;
+            getline(file, batas);
+        }
+        file.close();
+    } else {
+        jumlah = 0;
+    }
+}
 
 void input_data(int id[], string nama[], string jabatan[], string telp[], int &jumlah) {
     cout << "Jumlah karyawan yang ingin diinput: ";
@@ -33,6 +71,8 @@ void tampil_data(int id[], string nama[], string jabatan[], string telp[], int j
         cout << "No. Telp : " << telp[i] << endl;
         cout << endl;
     }
+
+    write_data(id, nama, jabatan, telp, jumlah);
 }
 
 void sort_ascending(int id[], string nama[], string jabatan[], string telp[], int jumlah) {
@@ -95,9 +135,11 @@ int main() {
     int jumlah = 0;
     int pilihan;
 
+    read_data(id, nama, jabatan, telp, jumlah);
+
     do {
         cout << "===============================================" << endl;
-        cout << "           DATA KARYAWAN PT AMBALABU           " << endl;
+        cout << "           DATA KARYAWAN PT AMBATAGOR          " << endl;
         cout << "===============================================" << endl;
         cout << "1. Input data karyawan" << endl;
         cout << "2. Tampilkan data karyawan (ASC/DESC)" << endl;
