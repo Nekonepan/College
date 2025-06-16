@@ -4,7 +4,7 @@ using namespace std;
 
 const int MAKS = 100;
 
-void write_data(const int id[], const string nama[], const string jabatan[], const string telp[], int jumlah) {
+void write_data(const string id[], const string nama[], const string jabatan[], const string telp[], int jumlah) {
     ofstream file("data_karyawan.txt");
     if (file.is_open()) {
         file << jumlah << endl;
@@ -21,14 +21,13 @@ void write_data(const int id[], const string nama[], const string jabatan[], con
     }
 }
 
-void read_data(int id[], string nama[], string jabatan[], string telp[], int &jumlah) {
+void read_data(string id[], string nama[], string jabatan[], string telp[], int &jumlah) {
     ifstream file("data_karyawan.txt");
     if (file.is_open()) {
         file >> jumlah;
         file.ignore();
         for (int i = 0; i < jumlah; i++) {
-            file >> id[i];
-            file.ignore();
+            getline(file, id[i]);
             getline(file, nama[i]);
             getline(file, jabatan[i]);
             getline(file, telp[i]);
@@ -41,7 +40,7 @@ void read_data(int id[], string nama[], string jabatan[], string telp[], int &ju
     }
 }
 
-void input_data(int id[], string nama[], string jabatan[], string telp[], int &jumlah) {
+void input_data(string id[], string nama[], string jabatan[], string telp[], int &jumlah) {
     cout << "Jumlah karyawan yang ingin diinput: ";
     cin >> jumlah;
     cin.ignore();
@@ -50,8 +49,7 @@ void input_data(int id[], string nama[], string jabatan[], string telp[], int &j
         cout << endl;
         cout << "Data ke-" << i + 1 << endl;
         cout << "ID Karyawan : ";
-        cin >> id[i];
-        cin.ignore();
+        getline(cin, id[i]);
         cout << "Nama Karyawan : ";
         getline(cin, nama[i]);
         cout << "Jabatan : ";
@@ -60,9 +58,11 @@ void input_data(int id[], string nama[], string jabatan[], string telp[], int &j
         getline(cin, telp[i]);
         cout << endl;
     }
+
+    write_data(id, nama, jabatan, telp, jumlah);
 }
 
-void tampil_data(int id[], string nama[], string jabatan[], string telp[], int jumlah) {
+void tampil_data(const string id[], const string nama[], const string jabatan[], const string telp[], int jumlah) {
     for (int i = 0; i < jumlah; i++) {
         cout << "DATA ke-" << i + 1 << endl;
         cout << "ID : " << id[i] << endl;
@@ -75,7 +75,7 @@ void tampil_data(int id[], string nama[], string jabatan[], string telp[], int j
     write_data(id, nama, jabatan, telp, jumlah);
 }
 
-void sort_ascending(int id[], string nama[], string jabatan[], string telp[], int jumlah) {
+void sort_ascending(string id[], string nama[], string jabatan[], string telp[], int jumlah) {
     for (int i = 0; i < jumlah - 1; i++) {
         for (int j = i + 1; j < jumlah; j++) {
             if (id[i] > id[j]) {
@@ -88,7 +88,7 @@ void sort_ascending(int id[], string nama[], string jabatan[], string telp[], in
     }
 }
 
-void sort_descending(int id[], string nama[], string jabatan[], string telp[], int jumlah) {
+void sort_descending(string id[], string nama[], string jabatan[], string telp[], int jumlah) {
     for (int i = 0; i < jumlah - 1; i++) {
         for (int j = i + 1; j < jumlah; j++) {
             if (id[i] < id[j]) {
@@ -101,11 +101,11 @@ void sort_descending(int id[], string nama[], string jabatan[], string telp[], i
     }
 }
 
-void cari_karyawan(int id[], string nama[], string jabatan[], string telp[], int jumlah) {
-    int cari_id;
+void cari_karyawan(const string id[], const string nama[], const string jabatan[], const string telp[], int jumlah) {
+    string cari_id;
 
     cout << "Masukkan ID karyawan yang ingin dicari: ";
-    cin >> cari_id;
+    getline(cin >> ws, cari_id);
 
     bool find = false;
 
@@ -128,7 +128,7 @@ void cari_karyawan(int id[], string nama[], string jabatan[], string telp[], int
 }
 
 int main() {
-    int id[MAKS];
+    string id[MAKS];
     string nama[MAKS];
     string jabatan[MAKS];
     string telp[MAKS];
