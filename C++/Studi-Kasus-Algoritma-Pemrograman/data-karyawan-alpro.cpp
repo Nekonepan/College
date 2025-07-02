@@ -8,19 +8,29 @@ const int MAKS = 100;
 void write_data(const string id[], const string nama[], const string jabatan[], const string telp[], int jumlah) {
     ofstream file("data_karyawan.txt");
     if (file.is_open()) {
-        file << jumlah << endl;
+        file << "Jumlah Karyawan : " << jumlah << "\n\n";
+        file << "| " << setw(12) << left << "ID Karyawan" 
+             << "| " << setw(17) << left << "Nama Karyawan" 
+             << "| " << setw(12) << left << "Jabatan" 
+             << "| " << setw(12) << left << "No. HP" 
+             << "|" << endl;
+        file << setfill('-') << setw(61) << "-" << setfill(' ') << endl;
+
         for (int i = 0; i < jumlah; i++) {
-            file << id[i] << endl;
-            file << nama[i] << endl;
-            file << jabatan[i] << endl;
-            file << telp[i] << endl;
-            file << "--------------------------" << endl;
+            file << "| " << setw(12) << left << id[i] 
+                 << "| " << setw(17) << left << nama[i] 
+                 << "| " << setw(12) << left << jabatan[i] 
+                 << "| " << setw(12) << left << telp[i] 
+                 << "|" << endl;
         }
+
         file.close();
+        cout << "Data berhasil disimpan dalam bentuk tabel." << endl;
     } else {
-        cout << "Gagal menyimpan data" << endl;
+        cout << "Gagal membuka file." << endl;
     }
 }
+
 
 void read_data(string id[], string nama[], string jabatan[], string telp[], int &jumlah) {
     ifstream file("data_karyawan.txt");
@@ -77,7 +87,7 @@ void tampil_data(const string id[], const string nama[], const string jabatan[],
         << "| " << setw(17) << left << nama[i] 
         << "| " << setw(12) << left << jabatan[i] 
         << "| " << setw(12) << left << telp[i] 
-        << "|\n";
+        << "|" << endl;
     }
 
     write_data(id, nama, jabatan, telp, jumlah);
