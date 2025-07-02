@@ -89,8 +89,6 @@ void tampil_data(const string id[], const string nama[], const string jabatan[],
         << "| " << setw(12) << left << telp[i] 
         << "|" << endl;
     }
-
-    write_data(id, nama, jabatan, telp, jumlah);
 }
 
 void sort_ascending(string id[], string nama[], string jabatan[], string telp[], int jumlah) {
