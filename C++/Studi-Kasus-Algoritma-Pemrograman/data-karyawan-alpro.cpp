@@ -181,6 +181,7 @@ int main() {
                 sort_descending(id, nama, jabatan, telp, jumlah);
                 tampil_data(id, nama, jabatan, telp, jumlah);
                 
+                cout << endl;
                 cout << "=== DATA ASCENDING (ID terkecil ke terbesar) ===" << endl;
                 sort_ascending(id, nama, jabatan, telp, jumlah);
                 tampil_data(id, nama, jabatan, telp, jumlah);
