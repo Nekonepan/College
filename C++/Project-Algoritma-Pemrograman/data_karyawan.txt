@@ -1,0 +1,5 @@
+Jumlah Karyawan : 1
+
+| ID Karyawan | Nama Karyawan    | Jabatan     | No. HP      |
+-------------------------------------------------------------
+| 2400018002  | Adam Januar Fauzi| Karyawan    | 08123434756 |
