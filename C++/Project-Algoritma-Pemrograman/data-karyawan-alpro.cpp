@@ -50,7 +50,7 @@ void input_data(string id[], string nama[], string jabatan[], string telp[], int
     cin >> input;
     cin.ignore();
     
-    for (int i = 0; i < jumlah; i++) {
+    for (int i = 0; i < input; i++) {
         cout << endl;
         cout << "Data ke-" << i + 1 << endl;
 
