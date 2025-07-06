@@ -8,26 +8,18 @@ const int MAKS = 100;
 void write_data(const string id[], const string nama[], const string jabatan[], const string telp[], int jumlah) {
     ofstream file("data_karyawan.txt");
     if (file.is_open()) {
-        file << "Jumlah Karyawan : " << jumlah << endl << endl;
-        file << "| " << setw(12) << left << "ID Karyawan" 
-             << "| " << setw(17) << left << "Nama Karyawan" 
-             << "| " << setw(12) << left << "Jabatan" 
-             << "| " << setw(12) << left << "No. HP" 
-             << "|" << endl;
-        file << setfill('-') << setw(61) << "-" << setfill(' ') << endl;
-
+        file << jumlah << endl;
         for (int i = 0; i < jumlah; i++) {
-            file << "| " << setw(12) << left << id[i] 
-                 << "| " << setw(17) << left << nama[i] 
-                 << "| " << setw(12) << left << jabatan[i] 
-                 << "| " << setw(12) << left << telp[i] 
-                 << "|" << endl;
+            file << id[i] << endl;
+            file << nama[i] << endl;
+            file << jabatan[i] << endl;
+            file << telp[i] << endl;
+            file << "------------------------------" << endl;
         }
-
         file.close();
-        cout << "Data berhasil disimpan dalam bentuk tabel." << endl;
+        cout << "Data berhasil disimpan" << endl;
     } else {
-        cout << "Gagal membuka file." << endl;
+        cout << "Gagal menyimpan file" << endl;
     }
 }
 
@@ -52,100 +44,84 @@ void read_data(string id[], string nama[], string jabatan[], string telp[], int 
 }
 
 void input_data(string id[], string nama[], string jabatan[], string telp[], int &jumlah) {
-    cout << "Jumlah karyawan yang ingin diinput: ";
-    cin >> jumlah;
+    int input;
+    
+    cout << "Jumlah data yang ingin diinput : ";
+    cin >> input;
     cin.ignore();
     
     for (int i = 0; i < jumlah; i++) {
         cout << endl;
         cout << "Data ke-" << i + 1 << endl;
+
         cout << "ID Karyawan : ";
         getline(cin, id[i]);
+
         cout << "Nama Karyawan : ";
         getline(cin, nama[i]);
+
         cout << "Jabatan : ";
         getline(cin, jabatan[i]);
+
         cout << "No. Telp : ";
         getline(cin, telp[i]);
+
         cout << endl;
+
+        jumlah++;
     }
 
     write_data(id, nama, jabatan, telp, jumlah);
 }
 
 void tampil_data(const string id[], const string nama[], const string jabatan[], const string telp[], int jumlah) {
-    cout << "| " << setw(12) << left << "ID Karyawan"
-         << "| " << setw(17) << left << "Nama Karyawan" 
-         << "| " << setw(12) << left << "Jabatan"
-         << "| " << setw(12) << left << "No. HP"
+    cout << "| " << setw(20) << left << "ID Karyawan"
+         << "| " << setw(20) << left << "Nama Karyawan" 
+         << "| " << setw(20) << left << "Jabatan"
+         << "| " << setw(20) << left << "No. HP"
          << "|" << endl;
 
-    cout << setfill('-') << setw(61) << "-" << setfill(' ') << "\n";
+    cout << setfill('-') << setw(61) << "-" << setfill(' ') << endl;
     
     for (int i = 0; i < jumlah; i++) {
-        cout << "| " << setw(12) << left << id[i] 
-             << "| " << setw(17) << left << nama[i] 
-             << "| " << setw(12) << left << jabatan[i] 
-             << "| " << setw(12) << left << telp[i] 
+        cout << "| " << setw(20) << left << id[i] 
+             << "| " << setw(20) << left << nama[i] 
+             << "| " << setw(20) << left << jabatan[i] 
+             << "| " << setw(20) << left << telp[i] 
              << "|" << endl;
     }
 }
 
+void swap_manual(string &a, string &b) {
+    string temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+
+// SORT KECIL KE BESAR
 void sort_ascending(string id[], string nama[], string jabatan[], string telp[], int jumlah) {
     for (int i = 0; i < jumlah - 1; i++) {
         for (int j = i + 1; j < jumlah; j++) {
             if (id[i] > id[j]) {
-                string temp;
-                
-                //SWAP ID
-                temp = id[i];
-                id[i] = id[j];
-                id[j] = temp;
-                
-                //SWAP NAMA
-                temp = nama[i];
-                nama[i] = nama[j];
-                nama[j] = temp;
-                
-                //SWAP JABATAN
-                temp = jabatan[i];
-                jabatan[i] = jabatan[j];
-                jabatan[j] = temp;
-                
-                //SWAP TELEPON
-                temp = telp[i];
-                telp[i] = telp[j];
-                telp[j] = temp;
+                swap_manual(id[i], id[j]);
+                swap_manual(nama[i], nama[j]);
+                swap_manual(jabatan[i], jabatan[j]);
+                swap_manual(telp[i], telp[j]);
             }
         }
     }
 }
 
+// SORT BESAR KE KECIL
 void sort_descending(string id[], string nama[], string jabatan[], string telp[], int jumlah) {
     for (int i = 0; i < jumlah - 1; i++) {
         for (int j = i + 1; j < jumlah; j++) {
             if (id[i] < id[j]) {
-                string temp;
-                
-                //SWAP ID
-                temp = id[i];
-                id[i] = id[j];
-                id[j] = temp;
-                
-                //SWAP NAMA
-                temp = nama[i];
-                nama[i] = nama[j];
-                nama[j] = temp;
-                
-                //SWAP JABATAN
-                temp = jabatan[i];
-                jabatan[i] = jabatan[j];
-                jabatan[j] = temp;
-                
-                //SWAP TELEPON
-                temp = telp[i];
-                telp[i] = telp[j];
-                telp[j] = temp;
+                swap_manual(id[i], id[j]);
+                swap_manual(nama[i], nama[j]);
+                swap_manual(jabatan[i], jabatan[j]);
+                swap_manual(telp[i], telp[j]);
             }
         }
     }
@@ -193,8 +169,9 @@ int main() {
         cout << "           DATA KARYAWAN PT AMBATAGOR          " << endl;
         cout << "===============================================" << endl;
         cout << "1. Input data karyawan" << endl;
-        cout << "2. Tampilkan data karyawan (ASC/DESC)" << endl;
-        cout << "3. Cari karyawan berdasarkan ID" << endl;
+        cout << "2. Tampilkan data karyawan" << endl;
+        cout << "3. Sorting Data (Ascending / Descending)" << endl;
+        cout << "4. Cari ID karyawan" << endl;
         cout << "0. Keluar" << endl;
         cout << "-----------------------------------------------" << endl;
         cout << "Pilihan: ";
@@ -210,19 +187,38 @@ int main() {
             }
             case 2: { //TAMPILKAN DATA KARYAWAN --------------------------------------------
                 system("cls");
-                cout << endl;
-                cout << "=== DATA DESCENDING (ID terbesar ke terkecil) ===" << endl;
-                sort_descending(id, nama, jabatan, telp, jumlah);
-                tampil_data(id, nama, jabatan, telp, jumlah);
-                
-                cout << endl;
-                cout << "=== DATA ASCENDING (ID terkecil ke terbesar) ===" << endl;
-                sort_ascending(id, nama, jabatan, telp, jumlah);
                 tampil_data(id, nama, jabatan, telp, jumlah);
                 system("pause");
                 break;
             }
-            case 3: { //CARI KARYAWAN ------------------------------------------------------
+            case 3: { //SORTING DATA ----------------------------------------------------------
+                system("cls");
+                cout << "========= PILIH MODE SORTING =========" << endl;
+                cout << "1. Sort ASCENDING (ID kecil ke besar)" << endl;
+                cout << "2. Sort DESCENDING (ID besar ke kecil)" << endl;
+                cout << "--------------------------------------" << endl;
+                cout << "Pilihan : ";
+                int mode;
+                cin >> mode;
+
+                switch (mode) {
+                    case 1: {
+                        sort_ascending(id, nama, jabatan, telp, jumlah);
+                    }
+                    case 2: {
+                        sort_descending(id, nama, jabatan, telp, jumlah);
+                    }
+                    default: {
+                        cout << "PILIHAN TIDAK VALID!" << endl;
+                    }
+                }
+
+                tampil_data(id, nama, jabatan, telp, jumlah);
+
+                system("pause");
+                break;
+            }
+            case 4: { //CARI KARYAWAN ------------------------------------------------------
                 system("cls");
                 cari_karyawan(id, nama, jabatan, telp, jumlah);
                 system("pause");
@@ -230,12 +226,13 @@ int main() {
             }
             case 0: { // KELUAR ------------------------------------------------------------
                 system("cls");
-                cout << "Program selesai." << endl;
-                system("pause");
+                cout << "+======================================+" << endl;
+                cout << "|---- PROGRAM SELESAI TERIMA KASIH ----|" << endl;
+                cout << "+======================================+" << endl;
                 break;
             }
             default: {
-                cout << "Pilihan tidak valid." << endl;
+                cout << "PILIHAN TIDAK VALID!" << endl;
             }
         }
         cout << endl;

@@ -1,5 +1,6 @@
-Jumlah Karyawan : 1
+Jumlah Karyawan : 2
 
 | ID Karyawan | Nama Karyawan    | Jabatan     | No. HP      |
 -------------------------------------------------------------
-| 2400018002  | Adam Januar Fauzi| Karyawan    | 08123434756 |
+| 001         | Fulan            | Karyawan    | 08123456789 |
+| 002         | Lutfan           | HRD         | 08987654321 |
