@@ -75,21 +75,24 @@ void input_data(string id[], string nama[], string jabatan[], string telp[], int
 }
 
 void tampil_data(const string id[], const string nama[], const string jabatan[], const string telp[], int jumlah) {
+    string garis = "+---------------------+-------------------------------+---------------------+---------------------+";
+    
+    cout << garis << endl;
     cout << "| " << setw(20) << left << "ID Karyawan"
-         << "| " << setw(20) << left << "Nama Karyawan" 
+         << "| " << setw(30) << left << "Nama Karyawan" 
          << "| " << setw(20) << left << "Jabatan"
          << "| " << setw(20) << left << "No. HP"
          << "|" << endl;
+    cout << garis << endl;
 
-    cout << setfill('-') << setw(61) << "-" << setfill(' ') << endl;
-    
     for (int i = 0; i < jumlah; i++) {
         cout << "| " << setw(20) << left << id[i] 
-             << "| " << setw(20) << left << nama[i] 
+             << "| " << setw(30) << left << nama[i] 
              << "| " << setw(20) << left << jabatan[i] 
              << "| " << setw(20) << left << telp[i] 
              << "|" << endl;
     }
+    cout << garis << endl;
 }
 
 void swap_manual(string &a, string &b) {
@@ -165,16 +168,16 @@ int main() {
 
     do {
         system("cls");
-        cout << "===============================================" << endl;
-        cout << "           DATA KARYAWAN PT AMBATAGOR          " << endl;
-        cout << "===============================================" << endl;
-        cout << "1. Input data karyawan" << endl;
-        cout << "2. Tampilkan data karyawan" << endl;
-        cout << "3. Sorting Data (Ascending / Descending)" << endl;
-        cout << "4. Cari ID karyawan" << endl;
-        cout << "0. Keluar" << endl;
-        cout << "-----------------------------------------------" << endl;
-        cout << "Pilihan: ";
+        cout << "+=============================================+" << endl;
+        cout << "|          DATA KARYAWAN PT AMBATAGOR         |" << endl;
+        cout << "+=============================================+" << endl;
+        cout << "| 1. Input data karyawan                      |" << endl;
+        cout << "| 2. Tampilkan data karyawan                  |" << endl;
+        cout << "| 3. Sorting Data (Ascending / Descending)    |" << endl;
+        cout << "| 4. Cari ID karyawan                         |" << endl;
+        cout << "| 0. Keluar                                   |" << endl;
+        cout << "+=============================================+" << endl;
+        cout << "Pilihan : ";
         cin >> pilihan;
         cout << endl;
 
@@ -193,10 +196,12 @@ int main() {
             }
             case 3: { //SORTING DATA ----------------------------------------------------------
                 system("cls");
-                cout << "========= PILIH MODE SORTING =========" << endl;
-                cout << "1. Sort ASCENDING (ID kecil ke besar)" << endl;
-                cout << "2. Sort DESCENDING (ID besar ke kecil)" << endl;
-                cout << "--------------------------------------" << endl;
+                cout << "+========================================+" << endl;
+                cout << "|           PILIH MODE SORTING           |" << endl;
+                cout << "+========================================+" << endl;
+                cout << "| 1. Sort ASCENDING (ID kecil ke besar)  |" << endl;
+                cout << "| 2. Sort DESCENDING (ID besar ke kecil) |" << endl;
+                cout << "+========================================+" << endl;
                 cout << "Pilihan : ";
                 int mode;
                 cin >> mode;
@@ -204,15 +209,18 @@ int main() {
                 switch (mode) {
                     case 1: {
                         sort_ascending(id, nama, jabatan, telp, jumlah);
+                        break;
                     }
                     case 2: {
                         sort_descending(id, nama, jabatan, telp, jumlah);
+                        break;
                     }
                     default: {
                         cout << "PILIHAN TIDAK VALID!" << endl;
                     }
                 }
 
+                cout << endl;
                 tampil_data(id, nama, jabatan, telp, jumlah);
 
                 system("pause");
@@ -227,7 +235,7 @@ int main() {
             case 0: { // KELUAR ------------------------------------------------------------
                 system("cls");
                 cout << "+======================================+" << endl;
-                cout << "|---- PROGRAM SELESAI TERIMA KASIH ----|" << endl;
+                cout << "|     PROGRAM SELESAI TERIMA KASIH     |" << endl;
                 cout << "+======================================+" << endl;
                 break;
             }
