@@ -83,12 +83,18 @@ void tampil_data(const string data[][KOLOM], int jumlah) {
     cout << garis << endl;
 }
 
+void swap_manual(string &a, string &b) {
+    string temp = a;
+    a = b;
+    b = temp;
+}
+
 void sort_ascending(string data[][KOLOM], int jumlah) {
     for (int i = 0; i < jumlah - 1; i++) {
         for (int j = i + 1; j < jumlah; j++) {
             if (data[i][0] > data[j][0]) {
                 for (int k = 0; k < KOLOM; k++) {
-                    swap(data[i][k], data[j][k]);
+                    swap_manual(data[i][k], data[j][k]);
                 }
             }
         }
@@ -100,7 +106,7 @@ void sort_descending(string data[][KOLOM], int jumlah) {
         for (int j = i + 1; j < jumlah; j++) {
             if (data[i][0] < data[j][0]) {
                 for (int k = 0; k < KOLOM; k++) {
-                    swap(data[i][k], data[j][k]);
+                    swap_manual(data[i][k], data[j][k]);
                 }
             }
         }
