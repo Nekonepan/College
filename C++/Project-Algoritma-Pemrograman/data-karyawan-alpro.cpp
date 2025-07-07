@@ -52,7 +52,7 @@ void input_data(string id[], string nama[], string jabatan[], string telp[], int
     
     for (int i = 0; i < input; i++) {
         cout << endl;
-        cout << "Data ke-" << jumlah + 1 << endl;
+        cout << "Data ke-" << i + 1 << endl;
 
         cout << "ID Karyawan : ";
         getline(cin, id[jumlah]);
