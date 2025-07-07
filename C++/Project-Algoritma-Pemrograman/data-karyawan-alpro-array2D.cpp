@@ -7,7 +7,7 @@ const int MAKS = 100;
 const int KOLOM = 4; // 0: ID, 1: Nama, 2: Jabatan, 3: Telp
 
 void write_data(string data[][KOLOM], int jumlah) {
-    ofstream file("data_karyawan_2.txt");
+    ofstream file("data_karyawan.txt");
     if (file.is_open()) {
         file << jumlah << endl;
         for (int i = 0; i < jumlah; i++) {
@@ -24,7 +24,7 @@ void write_data(string data[][KOLOM], int jumlah) {
 }
 
 void read_data(string data[][KOLOM], int &jumlah) {
-    ifstream file("data_karyawan_2.txt");
+    ifstream file("data_karyawan.txt");
     if (file.is_open()) {
         file >> jumlah;
         file.ignore();
@@ -43,20 +43,18 @@ void read_data(string data[][KOLOM], int &jumlah) {
 
 void input_data(string data[][KOLOM], int &jumlah) {
     int input;
+    string label[] = {"ID Karyawan", "Nama Karyawan", "Jabatan", "No. Telp"};
+
     cout << "Jumlah data yang ingin diinput : ";
     cin >> input;
     cin.ignore();
 
     for (int i = 0; i < input; i++) {
         cout << endl << "Data ke-" << i + 1 << endl;
-        cout << "ID Karyawan : ";
-        getline(cin, data[jumlah][0]);
-        cout << "Nama Karyawan : ";
-        getline(cin, data[jumlah][1]);
-        cout << "Jabatan : ";
-        getline(cin, data[jumlah][2]);
-        cout << "No. Telp : ";
-        getline(cin, data[jumlah][3]);
+        for (int j = 0; j < KOLOM; j++) {
+            cout << label[j] << " : ";
+            getline(cin, data[jumlah][j]);
+        }
         cout << endl;
         jumlah++;
     }
