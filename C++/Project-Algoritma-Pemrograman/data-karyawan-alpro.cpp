@@ -19,10 +19,9 @@ void write_data(const string id[], const string nama[], const string jabatan[], 
         file.close();
         cout << "Data berhasil disimpan" << endl;
     } else {
-        cout << "Gagal menyimpan file" << endl;
+        cout << "Gagal membuka file" << endl;
     }
 }
-
 
 void read_data(string id[], string nama[], string jabatan[], string telp[], int &jumlah) {
     ifstream file("data_karyawan.txt");
