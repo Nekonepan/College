@@ -89,6 +89,7 @@ void swap_manual(string &a, string &b) {
     b = temp;
 }
 
+// SORT KECIL KE BESAR
 void sort_ascending(string data[][KOLOM], int jumlah) {
     for (int i = 0; i < jumlah - 1; i++) {
         for (int j = i + 1; j < jumlah; j++) {
@@ -101,6 +102,7 @@ void sort_ascending(string data[][KOLOM], int jumlah) {
     }
 }
 
+// SORT BESAR KE KECIL
 void sort_descending(string data[][KOLOM], int jumlah) {
     for (int i = 0; i < jumlah - 1; i++) {
         for (int j = i + 1; j < jumlah; j++) {
@@ -159,17 +161,19 @@ int main() {
         cout << endl;
 
         switch (pilihan) {
-            case 1:
+            case 1: {  //INPUT DATA KARYAWAN ------------------------------------------------
                 system("cls");
                 input_data(data, jumlah);
                 system("pause");
                 break;
-            case 2:
+            }
+            case 2: { //TAMPILKAN DATA KARYAWAN --------------------------------------------
                 system("cls");
                 tampil_data(data, jumlah);
                 system("pause");
                 break;
-            case 3: {
+            }
+            case 3: { //SORTING DATA ----------------------------------------------------------
                 system("cls");
                 cout << "+========================================+" << endl;
                 cout << "|           PILIH MODE SORTING           |" << endl;
@@ -182,14 +186,17 @@ int main() {
                 cin >> mode;
 
                 switch (mode) {
-                    case 1:
+                    case 1: {
                         sort_ascending(data, jumlah);
                         break;
-                    case 2:
+                    }
+                    case 2: {
                         sort_descending(data, jumlah);
                         break;
-                    default:
+                    }
+                    default: {
                         cout << "PILIHAN TIDAK VALID!" << endl;
+                    }
                 }
 
                 cout << endl;
@@ -197,19 +204,22 @@ int main() {
                 system("pause");
                 break;
             }
-            case 4:
+            case 4: { //CARI KARYAWAN ------------------------------------------------------
                 system("cls");
                 cari_karyawan(data, jumlah);
                 system("pause");
                 break;
-            case 0:
+            }
+            case 0: { // KELUAR ------------------------------------------------------------
                 system("cls");
                 cout << "+======================================+" << endl;
                 cout << "|     PROGRAM SELESAI TERIMA KASIH     |" << endl;
                 cout << "+======================================+" << endl;
                 break;
-            default:
+            }
+            default: {
                 cout << "PILIHAN TIDAK VALID!" << endl;
+            }
         }
         cout << endl;
     } while (pilihan != 0);
