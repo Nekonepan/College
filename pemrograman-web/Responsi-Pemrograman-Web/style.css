@@ -1,45 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 30px;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #ffd6ff,
+    #e7c6ff,
+    #c8b6ff,
+    #b8c0ff,
+    #bbd0ff
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h2 {
   text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 form {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
   max-width: 400px;
-  margin: auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 label {
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  color: black;
 }
 
 input,
 select {
-  padding: 8px;
+  padding: 10px;
   font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+  border-color: #0a6cf1;
+  box-shadow: 0 0 0 3px rgba(10, 108, 241, 0.2);
+  outline: none;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
 }
 
 button {
-  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px;
+  padding: 14px;
   font-size: 16px;
   background-color: #0a6cf1;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
