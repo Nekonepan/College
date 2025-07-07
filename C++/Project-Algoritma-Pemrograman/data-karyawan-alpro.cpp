@@ -52,19 +52,19 @@ void input_data(string id[], string nama[], string jabatan[], string telp[], int
     
     for (int i = 0; i < input; i++) {
         cout << endl;
-        cout << "Data ke-" << i + 1 << endl;
+        cout << "Data ke-" << jumlah + 1 << endl;
 
         cout << "ID Karyawan : ";
-        getline(cin, id[i]);
+        getline(cin, id[jumlah]);
 
         cout << "Nama Karyawan : ";
-        getline(cin, nama[i]);
+        getline(cin, nama[jumlah]);
 
         cout << "Jabatan : ";
-        getline(cin, jabatan[i]);
+        getline(cin, jabatan[jumlah]);
 
         cout << "No. Telp : ";
-        getline(cin, telp[i]);
+        getline(cin, telp[jumlah]);
 
         cout << endl;
 
