@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Pemesanan Tiket</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Form Pemesanan Tiket</h2>
+  <form id="ticketForm" method="POST" action="proses.php">
+    <div class="form-group">
+      <label>Nama:</label>
+      <input type="text" name="nama" required>
+    </div>
+
+    <div class="form-group">
+      <label>Jumlah Tiket:</label>
+      <input type="number" name="jumlah" id="jumlah" min="1" value="1" required>
+    </div>
+
+    <div class="form-group">
+      <label>Kategori:</label>
+      <select name="kategori" id="kategori">
+        <option value="dewasa">Dewasa (Rp50.000)</option>
+        <option value="anak">Anak (Rp30.000)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Total Harga:</label>
+      <input type="text" id="totalHarga" readonly>
+    </div>
+
+    <button type="submit">Pesan</button>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
