@@ -7,15 +7,18 @@ int matriks[MAKS][MAKS];
 
 int cari_indeks(char nama, int n) {
     for (int i = 0; i < n; i++) {
-        if (pengguna[i] == nama)
-            return i;
+        if (pengguna[i] == nama) {
+          return i;
+        }
     }
     return -1;
 }
 
 void tampilkan_matriks(int n) {
     cout << endl << "Matriks Relasi: " << endl;
-    for (int i = 0; i < n; i++) cout << pengguna[i] << " ";
+    for (int i = 0; i < n; i++) {
+      cout << "    " << pengguna[i] << " ";
+    }
     cout << endl;
     for (int i = 0; i < n; i++) {
         cout << pengguna[i] << " | ";
@@ -27,27 +30,35 @@ void tampilkan_matriks(int n) {
 }
 
 bool cek_refleksif(int n) {
-    for (int i = 0; i < n; i++)
-        if (matriks[i][i] != 1)
-            return false;
+    for (int i = 0; i < n; i++) {
+      if (matriks[i][i] != 1) {
+        return false;
+      }
+    }
     return true;
 }
 
 bool cek_simteris(int n) {
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            if (matriks[i][j] != matriks[j][i])
-                return false;
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (matriks[i][j] != matriks[j][i])
+            return false;
+      }
+    }
     return true;
 }
 
 bool cek_transitif(int n) {
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            if (matriks[i][j] == 1)
-                for (int k = 0; k < n; k++)
-                    if (matriks[j][k] == 1 && matriks[i][k] == 0)
-                        return false;
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (matriks[i][j] == 1) {
+          for (int k = 0; k < n; k++) {
+            if (matriks[j][k] == 1 && matriks[i][k] == 0)
+                return false;
+          }
+        }
+      }
+    }
     return true;
 }
 
