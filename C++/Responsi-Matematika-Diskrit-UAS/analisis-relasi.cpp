@@ -16,8 +16,9 @@ int cari_indeks(char nama, int n) {
 
 void tampilkan_matriks(int n) {
     cout << endl << "Matriks Relasi: " << endl;
+    cout << "    ";
     for (int i = 0; i < n; i++) {
-      cout << "    " << pengguna[i] << " ";
+      cout << pengguna[i] << " ";
     }
     cout << endl;
     for (int i = 0; i < n; i++) {
