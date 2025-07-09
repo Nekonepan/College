@@ -44,12 +44,19 @@ Aplikasi ini memungkinkan pengguna untuk melakukan pemesanan tiket secara online
    Gunakan XAMPP, Laragon, atau aplikasi serupa yang mendukung PHP.
 2. **Letakkan Folder Proyek:**  
    Salin folder `Responsi-Pemrograman-Web` ke dalam direktori `htdocs` (XAMPP) atau `www` (Laragon).
-3. **Akses Melalui Browser:**  
-   Buka browser dan akses:  
-   ```bash
-   http://localhost/pemrograman-web/Responsi-Pemrograman-Web/
-   ```
-4. **Gunakan Aplikasi:**  
+3. **Akses Melalui Browser:**
+   - **Jika menggunakan XAMPP:**  
+     Buka browser dan akses:
+     ```bash
+     http://localhost/pemrograman-web/Responsi-Pemrograman-Web/
+     ```
+   - **Jika menggunakan Laragon:**  
+     Buka browser dan akses:
+     ```bash
+     http://responsi-pemrograman-web.test/
+     ```
+     _(Pastikan nama folder sesuai dan Laragon sudah berjalan. Jika domain belum muncul, klik kanan pada folder di Laragon > Create Virtual Host.)_
+4. **Gunakan Aplikasi:**
    - Isi nama, jumlah tiket, dan pilih kategori.
    - Total harga akan otomatis muncul.
    - Klik **Pesan** untuk melihat detail pemesanan.
@@ -58,12 +65,12 @@ Aplikasi ini memungkinkan pengguna untuk melakukan pemesanan tiket secara online
 
 ## 💡 Informasi Tambahan
 
-- **Harga Tiket:**  
-  - Dewasa: Rp50.000  
+- **Harga Tiket:**
+  - Dewasa: Rp50.000
   - Anak: Rp30.000
 - **Perhitungan Harga:**  
   Total harga = jumlah tiket × harga per tiket (berdasarkan kategori).
-- **Teknologi yang Digunakan:**  
+- **Teknologi yang Digunakan:**
   - HTML5
   - CSS3 (dengan Google Fonts)
   - JavaScript (DOM Manipulation)
