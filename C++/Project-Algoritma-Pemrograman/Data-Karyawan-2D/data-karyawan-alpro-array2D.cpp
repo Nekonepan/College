@@ -3,7 +3,7 @@
 #include <fstream>
 using namespace std;
 
-const int MAKS = 100;
+const int MAKS = 1000;
 const int KOLOM = 4; // 0: ID, 1: Nama, 2: Jabatan, 3: Telp
 
 void write_data(string data[][KOLOM], int jumlah) {
