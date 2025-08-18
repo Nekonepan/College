@@ -2,19 +2,24 @@
 using namespace std;
 
 int main() {
-    int arr[] = {12, 7, 28};
+    int arr[][] = {
+        {12, 7, 28}, 
+        {4, 10, 99};
+    }
 
     // inisialisasi min dan max dengan elemen pertama
     int min = arr[0];
     int max = arr[0];
 
     // cek semua elemen mulai dari indeks ke-1
-    for (int i = 0; i < 3; i++) {
-        if (arr[i] < min) {
-            min = arr[i]; // update min jika ketemu lebih kecil
-        }
-        if (arr[i] > max) {
-            max = arr[i]; // update max jika ketemu lebih besar
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (arr[i] < min) {
+                min = arr[i]; // update min jika ketemu lebih kecil
+            }
+            if (arr[i] > max) {
+                max = arr[i]; // update max jika ketemu lebih besar
+            }
         }
     }
 

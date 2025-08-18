@@ -1,0 +1,64 @@
+int arr[] = {12, 7, 28};
+
+min = 12
+max = 12
+
+for (0; 0 < 3; 1) //TRUE
+  if (12 < 12) //FALSE
+  if (12 > 12) //FALSE
+for (1; 1 < 3; 2) //TRUE
+  if (7 < 12) //TRUE
+    min = 7
+  if (7 > 12) //FALSE
+for (2; 2 < 3; 3) //TRUE
+  if (28 < 7) //FALSE
+  if (28 > 12) //TRUE
+    max = 28
+for (3; 3 < 3; 4) //FALSE
+
+print 7
+print 28
+
+
+int arr[] = {12, 7, 28};
+            {4, 10, 99};
+
+min = 12
+max = 12
+
+for (0; 0 < 2; 1) //TRUE
+  for (0; 0 < 3; 1) //TRUE
+    if (12 < 12) //FALSE
+    if (12 > 12) //FALSE
+
+  for (1; 1 < 3; 2) //TRUE
+    if (7 < 12) //TRUE
+      min = 7
+    if (7 > 12) //FALSE
+
+  for (2; 2 < 3; 3) //TRUE
+    if (28 < 12) //FALSE
+    if (28 > 12) //TRUE
+      max = 28
+
+  for (3; 3 < 3; 4) //FALSE
+
+    for (1; 1 < 2; 2) //TRUE
+     for (0; 0 < 3; 1) //TRUE
+       if (4 < 7) //TRUE
+          min = 4
+        if (4 > 28) //FALSE
+      for (1; 1 < 3; 2) //TRUE
+        if (10 < 4) //FALSE
+        if (10 > 28) //FALSE
+      for (2; 2 < 3; 3) //TRUE
+        if (99 < 4) //FALSE
+        if (99 > 28) //TRUE
+          max = 99
+
+      for (3; 3 < 3; 4) //FALSE
+    
+    for (2; 2 < 2; 3) //FALSE
+
+print 4
+print 99
