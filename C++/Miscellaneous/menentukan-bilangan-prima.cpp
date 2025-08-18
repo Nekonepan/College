@@ -2,24 +2,22 @@
 using namespace std;
 
 int main() {
-    int bilangan;
-    int sisa_nol = 0;
+    int arr[] = {12, 7, 3};
 
-    cout << "Masukkan bilangan: ";
-    cin >> bilangan;
+    cout << "Bilangan prima dalam array: ";
 
-    for (int i = 1; i <= bilangan; i++) {
-        if (bilangan % i == 0) {
-            sisa_nol = sisa_nol + 1;
+    for (int i = 0; i < 3; i++) {
+        int counter = 0;
+        for (int j = 1; j <= arr[i]; j++) {
+            if (arr[i] % j == 0) {
+                counter++;
+            }
+        }
+        if (counter == 2) { // prima = hanya habis dibagi 1 dan dirinya sendiri
+            cout << "Bilangan prima : " << arr[i] << " ";
         }
     }
 
-    if (sisa_nol == 2) {
-        cout << "Bilangan adalah Prima" << endl;
-    } else {
-        cout << "Bilangan adalah bukan Prima" << endl;
-    }
-
+    cout << endl;
     return 0;
 }
-
