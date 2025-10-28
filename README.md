@@ -1,6 +1,6 @@
 # 🎓 College Projects by Lutfan Alaudin Naja
 
-Welcome to the repository where I store various assignments and projects from my college journey! From C++ coding to web development exploration — it's all here as a personal archive and a reference for others.
+Welcome to the repository where I store various assignments and projects from my college journey! From C++ coding to web development exploration it's all here as a personal archive and a reference for others.
 
 ## 🔍 What's Inside?
 
