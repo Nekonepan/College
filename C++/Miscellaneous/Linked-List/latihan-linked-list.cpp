@@ -37,6 +37,21 @@ void print_node(Node* node) {
 	cout << "Jumlah Putar : " << node -> data.jumlah_putar << endl;
 }
 
+void hitung_total_putar_penyanyi (string key) {
+	int counter = 0;
+
+	Node* current = head;
+	do {
+		if (current -> data.nama_penyanyi == key) {
+			counter += current -> data.jumlah_putar;
+		}
+		current = current -> next;
+	} while (current != head);
+
+	cout << "Nama Penyanyi : " << key << endl;
+	cout << "Jumlah Putar : " << counter << endl;
+}
+
 int main () {
 	Node* A = new Node();
 	A -> data.nama_node = "Node A";
@@ -68,6 +83,7 @@ int main () {
 	C -> next = D;
 	D -> next = head;
 
-	// traversal();
+	traversal();
 	print_node(A);
+	hitung_total_putar_penyanyi("Ed Sheeran");
 }
