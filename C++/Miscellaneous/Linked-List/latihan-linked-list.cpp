@@ -39,14 +39,21 @@ void print_node(Node* node) {
 
 void hitung_total_putar_penyanyi (string key) {
 	int counter = 0;
+	bool found = false;
 
 	Node* current = head;
 	do {
 		if (current -> data.nama_penyanyi == key) {
 			counter += current -> data.jumlah_putar;
+			found = true;
 		}
 		current = current -> next;
 	} while (current != head);
+
+	if (!found) {
+		cout << "Penyanyi '" << key << "' tidak ditemukan!" << endl;
+		return;
+	}
 
 	cout << "Nama Penyanyi : " << key << endl;
 	cout << "Jumlah Putar : " << counter << endl;
@@ -84,6 +91,12 @@ int main () {
 	D -> next = head;
 
 	traversal();
-	print_node(A);
+
+	cout << endl;
+	
+	print_node(C);
+
+	cout << endl;
+	
 	hitung_total_putar_penyanyi("Ed Sheeran");
 }
