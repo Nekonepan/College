@@ -26,15 +26,17 @@ private:
 
 ostream& operator<<(ostream& out, const Stack& s) {
     out << "\nIsi stack : ";
-    for (int i = 0; i < s.banyak; i++)
+    for (int i = 0; i < s.banyak; i++) {
         out << "[" << s.A[i]->nim << ", " << s.A[i]->nama << "] ";
+    }
     return out;
 }
 
 Stack::Stack() {
     banyak = 0;
-    for (int i = 0; i < maks; i++)
+    for (int i = 0; i < maks; i++) {
         A[i] = nullptr;
+    }
 }
 
 int Stack::penuh() {
@@ -46,9 +48,10 @@ int Stack::kosong() {
 }
 
 void Stack::cetak() {
-    cout << "\nIsi stack : ";
-    for (int i = 0; i < banyak; i++)
-        cout << "[" << A[i]->nim << ", " << A[i]->nama << "] ";
+    cout << "\nDATA MAHASISWA :" << endl;
+    for (int i = 0; i < banyak; i++) {
+        cout << i + 1 << ".\tNama : " << A[i]->nama << "\n\tNIM : " << A[i]->nim << endl;
+    }
 }
 
 void Stack::push(Mahasiswa* x) {
@@ -83,7 +86,7 @@ int main() {
 
     do {
         cout << "=======================================" << endl;
-        cout << "|              STACK MENU              |" << endl;
+        cout << "|              STACK MENU             |" << endl;
         cout << "=======================================" << endl;
         cout << "| 1. Masukkan data mahasiswa (Push)   |" << endl;
         cout << "| 2. Hapus data mahasiswa (Pop)       |" << endl;
@@ -106,7 +109,6 @@ int main() {
             new_mahasiswa->nim = n;
             new_mahasiswa->nama = m;
             s.push(new_mahasiswa);
-            s.cetak();
             cout << endl;
             break;
         }
@@ -115,7 +117,6 @@ int main() {
             if (popped != nullptr) {
                 delete popped;
             }
-            s.cetak();
             cout << endl;
             break;
         }
