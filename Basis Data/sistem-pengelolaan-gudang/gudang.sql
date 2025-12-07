@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2025 at 11:47 AM
+-- Generation Time: Dec 07, 2025 at 02:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,45 @@ SET time_zone = "+00:00";
 --
 -- Database: `gudang`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cari_customer` (IN `keyword` VARCHAR(100))   BEGIN
+SELECT * FROM customer
+WHERE 
+nama_customer LIKE CONCAT('%', keyword, '%')
+OR customer_id = keyword;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_stok_barang` (IN `p_barang_id` INT)   BEGIN
+SELECT barang_id, nama_barang, stok
+FROM barang
+WHERE barang_id = p_barang_id;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_tambah_barang` (IN `p_kode_barang` VARCHAR(20), IN `p_nama_barang` VARCHAR(100), IN `p_stok` INT, IN `p_harga_satuan` INT)   BEGIN
+INSERT INTO barang(kode_barang, nama_barang, stok, harga_satuan)
+VALUES (p_kode_barang, p_nama_barang, p_Stok, p_harga_satuan);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_tambah_customer` (IN `p_nama_customer` VARCHAR(100), IN `p_alamat` TEXT, IN `p_no_telp` VARCHAR(20))   BEGIN
+INSERT INTO customer (nama_customer, alamat, no_telepon)
+VALUES (p_nama_customer, p_alamat, p_no_telp);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_transaksi_keluar` (IN `p_jumlah_keluar` INT, IN `p_barang_id` INT, IN `p_customer_id` INT)   BEGIN
+INSERT INTO transaksi_keluar(jumlah_keluar, barang_id, customer_id)
+VALUES (p_jumlah_keluar, p_barang_id, p_customer_id);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_transaksi_masuk` (IN `p_jumlah_masuk` INT, IN `p_barang_id` INT, IN `p_supplier_id` INT)   BEGIN
+INSERT INTO transaksi_masuk(jumlah_masuk, barang_id, supplier_id)
+VALUES (p_jumlah_masuk, p_barang_id, p_supplier_id);
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -41,15 +80,16 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`barang_id`, `kode_barang`, `nama_barang`, `stok`, `harga_satuan`) VALUES
 (1, 'BRG-001', 'Semen Holcim', 300, 55000),
-(2, 'BRG-002', 'Cat Dulux 5L', 120, 145000),
-(3, 'BRG-003', 'Besi Beton 12mm', 110, 85000),
+(2, 'BRG-002', 'Cat Dulux 5L', 220, 145000),
+(3, 'BRG-003', 'Besi Beton 12mm', 200, 85000),
 (4, 'BRG-004', 'Paku 2 inch', 500, 15000),
 (5, 'BRG-005', 'Triplek 12mm', 300, 120000),
-(6, 'BRG-006', 'Batu Bata', 950, 800),
+(6, 'BRG-006', 'Batu Bata', 750, 800),
 (7, 'BRG-007', 'Keramik 40x40', 300, 65000),
 (8, 'BRG-008', 'Cat Avian 1L', 250, 45000),
 (9, 'BRG-009', 'Semen Tiga Roda', 300, 53000),
-(10, 'BRG-010', 'Pipa PVC 1 inch', 200, 35000);
+(10, 'BRG-010', 'Pipa PVC 1 inch', 200, 35000),
+(11, 'BRG-011', 'Amplas Grit 1000 4 inci x 50m/yard', 40, 195000);
 
 -- --------------------------------------------------------
 
@@ -103,7 +143,16 @@ INSERT INTO `log_transaksi` (`log_id`, `aktivitas`, `tanggal`) VALUES
 (4, 'Barang ID 5 keluar sebanyak 10', '2025-12-03 11:52:57'),
 (5, 'Barang ID 5 keluar sebanyak 30', '2025-12-03 11:55:00'),
 (6, 'Barang ID 5 masuk sebanyak 300', '2025-12-03 11:55:22'),
-(7, 'Barang ID 3 masuk sebanyak 20', '2025-12-03 11:59:16');
+(7, 'Barang ID 3 masuk sebanyak 20', '2025-12-03 11:59:16'),
+(8, 'Transaksi Masuk: Barang 3 masuk sebanyak 50', '2025-12-07 11:19:54'),
+(9, 'Barang ID 2 masuk sebanyak 100', '2025-12-07 11:43:35'),
+(10, 'Transaksi Masuk: Barang 2 masuk sebanyak 100', '2025-12-07 11:43:35'),
+(11, 'Transaksi Masuk : barang_id(3) masuk sebanyak 40', '2025-12-07 11:48:54'),
+(12, 'Transaksi Masuk : barang_id(6) masuk sebanyak 200', '2025-12-07 11:56:57'),
+(13, 'Transaksi Keluar : barang_id(6) keluar sebanyak 400', '2025-12-07 12:01:36'),
+(14, 'Transaksi Masuk : barang_id(11) masuk sebanyak 10', '2025-12-07 12:10:23'),
+(15, 'Transaksi Masuk : barang_id(11) masuk sebanyak 35', '2025-12-07 12:25:02'),
+(17, 'Transaksi Keluar : barang_id(11) keluar sebanyak 5', '2025-12-07 12:25:48');
 
 -- --------------------------------------------------------
 
@@ -162,18 +211,20 @@ INSERT INTO `transaksi_keluar` (`keluar_id`, `tanggal_keluar`, `jumlah_keluar`, 
 (7, '2025-01-21', 12, 7, 7),
 (8, '2025-01-22', 9, 8, 8),
 (9, '2025-01-23', 6, 9, 9),
-(10, '2025-01-24', 10, 10, 10);
+(10, '2025-01-24', 10, 10, 10),
+(11, '2025-12-07', 400, 6, 3),
+(12, '2025-12-07', 5, 11, 3);
 
 --
 -- Triggers `transaksi_keluar`
 --
 DELIMITER $$
-CREATE TRIGGER `log_transaksi_keluar` AFTER UPDATE ON `transaksi_keluar` FOR EACH ROW INSERT INTO log_transaksi(aktivitas)
-VALUES (CONCAT('Barang ID ', NEW.barang_id, ' keluar sebanyak ', NEW.jumlah_keluar))
+CREATE TRIGGER `log_transaksi_keluar` BEFORE INSERT ON `transaksi_keluar` FOR EACH ROW INSERT INTO log_transaksi(aktivitas)
+VALUES (CONCAT('Transaksi Keluar : barang_id(', NEW.barang_id, ') keluar sebanyak ', NEW.jumlah_keluar))
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `update_stok_transaksi_keluar` BEFORE UPDATE ON `transaksi_keluar` FOR EACH ROW BEGIN
+CREATE TRIGGER `update_stok_transaksi_keluar` BEFORE INSERT ON `transaksi_keluar` FOR EACH ROW BEGIN
 DECLARE stok_barang INT;
 SELECT stok INTO stok_barang 
 FROM barang 
@@ -218,31 +269,24 @@ INSERT INTO `transaksi_masuk` (`masuk_id`, `tanggal_masuk`, `jumlah_masuk`, `bar
 (7, '2025-01-11', 120, 7, 7),
 (8, '2025-01-12', 90, 8, 8),
 (9, '2025-01-13', 100, 9, 9),
-(10, '2025-01-14', 80, 10, 10);
+(10, '2025-01-14', 80, 10, 10),
+(11, '2025-12-07', 50, 3, 9),
+(12, '2025-12-07', 100, 2, 7),
+(13, '2025-12-07', 40, 3, 6),
+(14, '2025-12-07', 200, 6, 3),
+(15, '2025-12-07', 10, 11, 4),
+(16, '2025-12-07', 35, 11, 10);
 
 --
 -- Triggers `transaksi_masuk`
 --
 DELIMITER $$
-CREATE TRIGGER `cek_barang_saat_update_masuk` BEFORE UPDATE ON `transaksi_masuk` FOR EACH ROW BEGIN
-DECLARE jumlah INT;
-SELECT COUNT(*) INTO jumlah
-FROM barang
-WHERE barang_id = NEW.barang_id;
-IF jumlah = 0 THEN
-SIGNAL SQLSTATE '45000'
-SET MESSAGE_TEXT = 'Barang dengan ID tersebut belum terdaftar.';
-END IF;
-END
+CREATE TRIGGER `log_transaksi_masuk` BEFORE INSERT ON `transaksi_masuk` FOR EACH ROW INSERT INTO log_transaksi(aktivitas)
+VALUES (CONCAT('Transaksi Masuk : barang_id(', NEW.barang_id, ') masuk sebanyak ', NEW.jumlah_masuk))
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `log_transaksi_masuk` AFTER UPDATE ON `transaksi_masuk` FOR EACH ROW INSERT INTO log_transaksi(aktivitas)
-VALUES (CONCAT('Barang ID ', NEW.barang_id, ' masuk sebanyak ', NEW.jumlah_masuk))
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `update_stok_transaksi_masuk` BEFORE UPDATE ON `transaksi_masuk` FOR EACH ROW BEGIN
+CREATE TRIGGER `update_stok_transaksi_masuk` BEFORE INSERT ON `transaksi_masuk` FOR EACH ROW BEGIN
 UPDATE barang
 SET stok = stok + NEW.jumlah_masuk
 WHERE barang_id = NEW.barang_id;
@@ -303,7 +347,7 @@ ALTER TABLE `transaksi_masuk`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `barang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `barang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -315,7 +359,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `log_transaksi`
 --
 ALTER TABLE `log_transaksi`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -327,13 +371,13 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `transaksi_keluar`
 --
 ALTER TABLE `transaksi_keluar`
-  MODIFY `keluar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `keluar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `transaksi_masuk`
 --
 ALTER TABLE `transaksi_masuk`
-  MODIFY `masuk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `masuk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
