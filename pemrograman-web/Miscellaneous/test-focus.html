@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Focus Log Test</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+      #log {
+        margin-top: 20px;
+      }
+      .item {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Focus / Visibility Log</h2>
+    <div id="log"></div>
+
+    <script>
+      const logEl = document.getElementById("log");
+
+      function addLog(message) {
+        const time = new Date().toLocaleTimeString();
+        const div = document.createElement("div");
+        div.className = "item";
+        div.textContent = `[${time}] ${message}`;
+        logEl.prepend(div); // log terbaru di atas
+      }
+
+      window.addEventListener("focus", () => addLog("FOCUS (window aktif)"));
+      window.addEventListener("blur", () =>
+        addLog("BLUR (window tidak aktif)"),
+      );
+
+      document.addEventListener("visibilitychange", () => {
+        addLog("VISIBILITY: " + document.visibilityState);
+      });
+
+      // log pertama saat load
+      addLog("PAGE LOADED");
+    </script>
+  </body>
+</html>
