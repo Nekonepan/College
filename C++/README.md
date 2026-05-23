@@ -1,68 +1,69 @@
-# 💻 Kumpulan Proyek & Studi Kasus C++
+# 💻 Collection of C++ Projects & Case Studies
 
-Selamat datang di direktori **C++** dari repositori ini!  
-Di sinilah saya menyimpan berbagai hasil latihan, eksperimen, hingga tugas kuliah yang dibuat selama proses pembelajaran bahasa pemrograman **C++**.
+Welcome to the **C++** directory of this repository!  
+Here, I store various practice exercises, experiments, and college assignments completed during my learning journey with the **C++** programming language.
 
-Tujuan utama dari folder ini adalah sebagai **jejak pembelajaran** saya dalam memahami dasar-dasar algoritma, struktur data, serta penerapan logika dalam bentuk kode nyata.
-
----
-
-## ✨ Apa Saja yang Ada di Sini?
-
-Di dalam folder ini, kamu bisa menemukan:
-
-- **Studi kasus logika dasar**  
-Seperti pengolahan array, sorting & searching manual, dan sistem berbasis menu.
-
-- **Simulasi program nyata**  
-Contoh: sistem kasir, pengelolaan data karyawan, aplikasi belanja, hingga invoice generator berbasis file.
-
-- **Permainan terminal**  
-Salah satunya adalah **Tic Tac Toe** berbasis konsol yang bisa dimainkan 2 orang secara bergantian.
-
-- **Responsi dan Ujian Praktik**  
-Berisi program-program yang dikembangkan sebagai bagian dari responsi UTS/UAS — mencakup relasi matematika diskrit, validasi input, dan pengujian logika.
-
-- **Latihan manipulasi file**  
-Penggunaan `fstream` untuk baca/tulis data `.txt` yang relevan dengan dunia nyata.
+The main purpose of this folder is to serve as a **learning record** of my progress in understanding the fundamentals of algorithms, data structures, and applying logic through real code.
 
 ---
 
-## 🎯 Tujuan Proyek Ini
+## ✨ What's Inside?
 
-- 💡 Mengasah **logika berpikir dan problem solving**
-- 🧠 Memahami **struktur program modular** dan penggunaan fungsi
-- 📂 Membangun kebiasaan dokumentasi dan struktur proyek
-- 🔧 Menerapkan konsep kuliah ke dalam solusi praktis
-- 🎮 Sesekali... bikin program biar seru, bukan sekadar tugas 😄
+In this folder, you can find:
+
+- **Basic Logic Case Studies**  
+Includes array manipulation, manual sorting & searching, and menu-based systems.
+
+- **Real-world Program Simulations**  
+Examples: cashier systems, employee data management, shopping applications, and file-based invoice generators.
+
+- **Terminal Games**  
+Such as **Tic Tac Toe** console game that can be played by 2 players alternately.
+
+- **Practical Exams & Responses**  
+Programs developed for midterm/final exam responses — covering discrete mathematics relations, input validation, and logic testing.
+
+- **File Manipulation Practice**  
+Using `fstream` for reading/writing `.txt` data relevant to real-world applications.
 
 ---
 
-## 🧰 Tools & Bahasa
+## 🎯 Project Goals
 
-- Bahasa: **C++**
-- IDE yang digunakan: Dev-C++ / VS Code
-- Kompilasi: `g++` (GCC) via terminal
+- 💡 Sharpen **logical thinking and problem-solving skills**
+- 🧠 Understand **modular program structure** and function usage
+- 📂 Build good habits for documentation and project organization
+- 🔧 Apply classroom concepts to practical solutions
+- 🎮 Sometimes... make programs to have fun, not just complete assignments 😄
 
-Contoh menjalankan program:
+---
+
+## 🧰 Tools & Language
+
+- Language: **C++**
+- IDEs used: Dev-C++ / VS Code
+- Compilation: `g++` (GCC) via terminal
+
+Example of running a program:
 ```bash
-g++ namafile.cpp -o program
+g++ filename.cpp -o program
 ./program
 ```
 
 --- 
 
-## 👨‍🎓 Cocok Untuk...
-- Mahasiswa yang sedang belajar Dasar Pemrograman / Algoritma Pemrograman
-- Siapa pun yang ingin melihat contoh program dasar dengan penjelasan
-- Teman-teman yang butuh referensi responsi atau proyek kuliah
+## 👨‍🎓 Perfect For...
+- Students learning Basics of Programming / Algorithm Programming
+- Anyone who wants to see examples of basic programs with explanations
+- Friends who need references for practical exams or college projects
 
 ---
 
-## 🙋 Tentang Saya
-Program-program ini dibuat oleh `Lutfan Alaudin Naja`, aka `Nekonepan`.
-seorang mahasiswa yang sedang menapaki jalan ngoding... satu baris kode pada satu waktu.
+## 🙋 About Me
+
+These programs were created by `Lutfan Alaudin Naja`, aka `Nekonepan`,
+a student walking the path of coding... one line of code at a time.
 
 ---
 
-### Silakan fork, gunakan, atau beri bintang ⭐ kalau kamu suka atau merasa terbantu!
+### Feel free to fork, use, or give a star ⭐ if you like it or find it helpful!
